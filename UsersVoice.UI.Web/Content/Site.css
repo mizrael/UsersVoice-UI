@@ -1,0 +1,146 @@
+﻿body {
+    padding-top: 140px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.area-container {
+    padding-bottom: 15px;
+}
+
+.k-widget.k-listview {
+    border: 0;
+}
+
+h2 div.author {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.area {
+    padding-bottom: 15px;
+    padding: 4px;
+}
+
+.area.selected {
+    background-color: #DDDDDD;
+    border-radius: 3px;
+}
+
+.area .author {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #AAA;
+}
+
+.area .title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.area .description {
+    font-size: 14px;
+    color: #999;
+}
+
+.idea .row {
+    margin: 0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.ideas-container .idea .title {
+       font-size: 30px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    line-height: 30px;
+}
+
+.ideas-container .idea .description {
+    font-size: 16px;
+}
+
+.votes-big-number {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.boxTitle {
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.idea-details .description { font-size: 16px;}
+
+.bold{ font-weight: bold;}
+.bottom10{ margin-bottom: 10px;}
+.bottom20{ margin-bottom: 20px;}
+.bottom30{ margin-bottom: 30px;}
+
+.posted-on {
+    font-size:12px;
+}
+
+.pull-right {
+    font-size: 18px;
+}
+
+.votingIdeaContainer {
+    font-size: 21px;
+}
+
+.votingIdeaContainer a {
+    cursor: pointer; 
+    cursor: hand;
+}
+
+.votingIdeaContainer a.votingControl {
+    float: left;
+    text-align: center;
+    margin-right: 25px;
+}
+
+.votingIdeaContainer a.votingControl:hover div.explanationText {
+    display: block;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.votingIdeaContainer a.votingControl:hover i {
+    color: orange;
+}
+
+.votingIdeaContainer div.explanationText {
+    font-size: 15px;
+    opacity: 0.25;
+}
+
+.navbar {
+    background-color: #0085c3;
+}
+
+.navbar .navbar-brand {
+    color: white;
+}
+
+.appTitle img {
+    width: 90px;
+    height: 90px;
+    margin-right: 8px;
+}
+
+.appTitle a {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+img {
+    max-width: 100%;
+}

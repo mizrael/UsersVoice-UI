@@ -1,0 +1,62 @@
+﻿<div class="row">
+    <div class="col-md-3" ng-controller="AreasController">
+        <h2 class="boxTitle">Areas</h2>
+
+        <div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
+
+        <div class="area-container" ng-repeat="dataItem in areas">
+            <div ng-class="{selected: isSelected(dataItem)}" class="area">
+                <div class="title"><a ng-click="onClickOnArea(dataItem, $event)" href="#">{{dataItem.Title}}</a>
+                </div>
+                <p class="description">{{ dataItem.Description | limitTo:150 }}{{dataItem.Description.length > 150 ? '...' : ''}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-1" ng-controller="IdeasController">
+
+        <div class="row boxTitle bottom20">
+            <div class="col-md-12 text-center">
+                <h2 ng-hide="selectedArea" class="pull-left">Latest Ideas</h2>
+                <h2 ng-show="selectedArea" class="pull-left">Ideas <span>in {{selectedArea.Title}}</span></h2>
+                <button type="button" ng-show="canAddIdea()" ng-click="addNewIdeaToArea()"
+                        style="margin-top: 20px;" class="btn btn-info pull-right">
+                    Add new idea for this area
+                </button>
+            </div>
+        </div>
+
+        <div class="row ideas-container">
+            <div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
+
+            <div ng-repeat="dataItem in source">
+                <div class="row idea bottom20">
+                    <div class="col-md-2">
+                        <div class="col-md-12 text-center">
+                            <user-avatar name="{{dataItem.AuthorCompleteName}}" id="{{dataItem.AuthorId}}" class="img-circle img-responsive"></user-avatar>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <a href='#/users/{{dataItem.AuthorId}}'>{{dataItem.AuthorCompleteName}}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="title">
+                            <a href='#/ideas/{{dataItem.Id}}'>{{dataItem.Title}}</a>
+                        </div>
+                        <p class="description">{{ dataItem.Description | limitTo:150 }}{{dataItem.Description.length > 150 ? '...' : ''}}</p>
+                        <p class="posted-on">
+                            <span class="pull-left">posted in <a href="#/areas/{{dataItem.AreaId}}">{{dataItem.AreaTitle}}</a> on {{dataItem.CreationDate | date : shortDate}}</span>
+                            <div class="pull-right">
+                                <span class="glyphicon glyphicon-heart"></span> {{dataItem.TotalPoints}}
+                                <span class="glyphicon glyphicon-comment"></span> {{dataItem.TotalComments}}
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

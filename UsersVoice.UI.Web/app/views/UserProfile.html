@@ -1,0 +1,64 @@
+﻿
+<div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
+
+<div class="user-profile" ng-hide="isLoading()">
+    <div class="col-md-3">
+        <div class="col-md-12 text-center">
+            <user-avatar name="{{model.CompleteName}}" id="{{model.Id}}" class="img-circle"></user-avatar>
+        </div>
+        <div class="col-md-12 text-center">
+            <h4>{{model.CompleteName}}</h4>
+            <p>available points: <strong>{{model.AvailablePoints}}</strong></p>
+            <p>ideas posted: <strong>{{model.IdeasCount}}</strong></p>
+            <p>comments: <strong>{{model.CommentsCount}}</strong></p>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <ul class="nav nav-tabs" role="tablist" id="userTabs">
+            <li role="presentation" class="active"><a href="#latestIdeas" aria-controls="home" role="tab" data-toggle="tab">Latest Ideas</a></li>
+            <li role="presentation"><a href="#latestComments" aria-controls="profile" role="tab" data-toggle="tab">Latest Comments</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="latestIdeas">
+                <div ng-show="isLoadingIdeas()" ng-include="'/app/views/Loading.html'"></div>
+
+                <table class="table table-striped" ng-hide="isLoadingIdeas()">
+                    <tr ng-repeat="dataItem in ideas">
+                        <td>
+                            <div class="title">
+                                <a href='#/ideas/{{dataItem.Id}}'>{{dataItem.Title}}</a>
+                            </div>
+                            <p class="description">{{ dataItem.Description | limitTo:150 }}{{dataItem.Description.length > 150 ? '...' : ''}}</p>
+                            <p class="posted-on">
+                                <span class="pull-left">posted in <a href="#/areas/{{dataItem.AreaId}}">{{dataItem.AreaTitle}}</a> on {{dataItem.CreationDate | date : shortDate}}</span>
+                                <div class="pull-right">
+                                    <span class="glyphicon glyphicon-heart"></span> {{dataItem.TotalPoints}}
+                                    <span class="glyphicon glyphicon-comment"></span> {{dataItem.TotalComments}}
+                                </div>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="latestComments">
+                <div ng-show="isLoadingComments()" ng-include="'/app/views/Loading.html'"></div>
+
+                <table class="table table-striped" ng-hide="isLoadingComments()">
+                    <tr ng-repeat="comment in comments">
+                        <td>
+                            <p>{{comment.Text}}</p>
+                            <p class="posted-on">
+                                posted on <a href='#/ideas/{{comment.IdeaId}}' title="{{comment.IdeaTitle}}">{{comment.IdeaTitle}}</a>, {{comment.CreationDate | date : shortDate}}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

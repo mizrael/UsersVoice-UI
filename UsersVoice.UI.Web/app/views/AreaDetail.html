@@ -1,0 +1,14 @@
+﻿<div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
+<div class="area-details col-md-12" ng-hide="isLoading()">
+    <div class="row bottom20">
+        <div class="col-md-12 boxTitle bottom10">
+            <h2>{{model.Title}}</h2>
+        </div>
+        <div class="col-md-12">
+            <p>{{model.Description}}</p>
+        </div>
+    </div>
+
+    <div class="row bottom20">
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<h2>Submit a new idea</h2>
+<form role="form">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input ng-model="model.title" type="text" class="form-control" id="title" placeholder="What's your suggestion?">
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea ng-model="model.description" class="form-control" rows="5" id="description" placeholder="Write your idea using plain language explaining why people should care about it and who your idea would be benefiting most.">
+        </textarea>
+    </div>
+    <button type="submit" ng-click="submitIdea()" class="btn btn-default">Submit</button>
+    <div style="margin-top: 15px;">
+        <p ng-show="model.validationError" class="alert alert-warning">Please introduce a <b>title</b> and <b>description</b></p>
+        <p ng-show="model.success" class="alert alert-success"><b>Your idea has been submitted!</b></p>
+    </div>
+</form>

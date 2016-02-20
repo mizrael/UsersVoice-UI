@@ -1,0 +1,13 @@
+﻿<h1>Log in to use your Voice</h1>
+<div ng-controller="LoginController">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control"  ng-model="username" name="username" id="username" placeholder="Enter your username..." />
+        </div>
+
+        <button ng-hide="isLoading" class="btn btn-default" ng-click="login()">Log on</button>
+        <div ng-show="isLoading" ng-include="'/app/views/Loading.html'"></div>
+        <div ng-show="error" style="color:red;">Invalid credentials!</div>
+    </form>
+</div>

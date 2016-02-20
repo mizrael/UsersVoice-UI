@@ -1,0 +1,61 @@
+﻿<div ng-controller="IdeaCommentsController">
+
+    <div class="row bottom20">
+        <div class="col-md-12 boxTitle">
+            <h3>
+                Comments
+            </h3>
+        </div>
+    </div>
+
+    <div ng-repeat="comment in model.Comments">
+        <div class="row bottom20">
+            <div class="col-md-12 ">
+                <div class="col-md-2">
+                    <div class="col-md-12 text-center">
+                        <user-avatar name="{{comment.AuthorCompleteName}}" id="{{comment.AuthorId}}" class="img-circle img-responsive"></user-avatar>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <a href='#/users/{{comment.AuthorId}}'>
+                            <span class="bold">{{comment.AuthorCompleteName}}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <p>{{comment.Text}}</p>
+                    <p class="posted-on">posted on {{comment.CreationDate | date : shortDate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="canViewNewCommentBox()">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                    Add your comment
+                </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <textarea name="newComment" id="newComment" class="form-control" ng-model="newComment.Text"></textarea>
+                    </div>
+                    <button ng-disabled="!canSendComment()" ng-click="sendComment()" type="submit" class="btn btn-info pull-right">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div ng-show="!canViewNewCommentBox()">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                    Want to add your comment? Please <a href="/#/login">log in</a> first!
+                </h4>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="col-md-12 votingIdeaContainer" ng-controller="VotingIdeaController">
+    <div ng-show="canVote()">
+
+        <div ng-show="!hasVoted">
+            <h5>Do you like this idea? Vote it!</h5>
+
+            <a class="votingControl" ng-click="submitVotes(1)">
+                <div>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="explanationText">Nice</div>
+            </a>
+            <a class="votingControl" ng-click="submitVotes(2)">
+                <div>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="explanationText">Cool beans</div>
+            </a>
+            <a class="votingControl" ng-click="submitVotes(3)">
+                <div>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <div class="explanationText">Awesome sauce</div>
+            </a>
+        </div>
+        <div ng-show="hasVoted">
+            <h5>Don't you like this idea anymore?</h5>
+            <a ng-click="submitVotes(0)">Unvote it!</a>
+        </div>
+     </div>
+    <div ng-show="!canVote()">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                    Want to vote? Please <a href="/#/login">log in</a> first!
+                </h4>
+            </div>
+        </div>
+    </div>
+ </div>
