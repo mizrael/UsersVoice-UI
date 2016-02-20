@@ -27,12 +27,12 @@
         <div ng-include="'/app/views/IdeaComments.html'"></div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" ng-if="author">
         <div class="col-md-12 text-center">
-            <user-avatar name="{{model.AuthorCompleteNameCompleteName}}" id="{{model.AuthorId}}" class="img-circle"/>
+            <user-avatar name="{{author.CompleteName}}" id="{{author.Id}}" class="img-circle" />
         </div>
-        <div class="col-md-12 text-center" ng-if="author">
-            <a href='#/users/{{author.Id}}'>
+        <div class="col-md-12 text-center">
+            <a href="#/users/{{author.Id}}">
                 <h4>{{author.CompleteName}}</h4>
             </a>
             <p>available points: <strong>{{author.AvailablePoints}}</strong></p>

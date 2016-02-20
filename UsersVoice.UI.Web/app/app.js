@@ -1,4 +1,4 @@
-﻿angular.module('userVoice', ["ngRoute", "kendo.directives"])
+﻿angular.module('userVoice', ["ngRoute"])
     .config([
         '$routeProvider',
         function($routeProvider) {
