@@ -143,7 +143,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Core\Database.cs" />
     <Compile Include="Controllers\IdeasController.cs" />
     <Compile Include="Models\Idea.cs" />
     <Compile Include="Models\Area.cs" />
@@ -206,12 +205,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />

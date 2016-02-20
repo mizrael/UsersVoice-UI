@@ -20,10 +20,6 @@ namespace UsersVoice.UI.Web.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> Get([FromUri] CommentFilter filter)
         {
-#if DEBUG
-            var comments = await Database.GetCommentsAsync(ideaId);
-            return Ok(comments);
-#else
             var url = string.Format("/ideaComments?page={0}&pageSize={1}", filter.Page, filter.PageSize);
             if (filter.IdeaId != Guid.Empty)
                 url += "&ideaId=" + filter.IdeaId;
@@ -32,7 +28,6 @@ namespace UsersVoice.UI.Web.Controllers
 
             var items = await _apiClient.FetchCollection<Comment>(url);
             return Ok(items);
-#endif
         }
 
     }

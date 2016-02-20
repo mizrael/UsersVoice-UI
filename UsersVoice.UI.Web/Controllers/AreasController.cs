@@ -19,15 +19,10 @@ namespace UsersVoice.UI.Web.Controllers
 
         public async Task<IHttpActionResult> Get()
         {
-#if DEBUG
-            var areas = await Database.GetAreasAsync();
-            return Ok(areas);
-#else
             var url = "/areas?pageSize=10&page=0";
 
             var items = await _apiClient.FetchCollection<Area>(url);
             return Ok(items);
-#endif
         }
 
         [HttpGet, Route("{id}")]
@@ -46,10 +41,6 @@ namespace UsersVoice.UI.Web.Controllers
         [HttpGet, Route("{areaId}/ideas")]
         public async Task<IHttpActionResult> GetIdeas(Guid areaId, int page, int pageSize)
         {
-#if DEBUG
-            var ideas = await Database.GetIdeasAsync(filter.AreaId);
-            return Ok(ideas);
-#else
             if (areaId == Guid.Empty)
                 return NotFound();
 
@@ -58,7 +49,6 @@ namespace UsersVoice.UI.Web.Controllers
 
             var items = await _apiClient.FetchCollection<Idea>(url);
             return Ok(items);
-#endif
         }
 
     }

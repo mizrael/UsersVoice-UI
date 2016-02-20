@@ -20,10 +20,6 @@ namespace UsersVoice.UI.Web.Controllers
 
         public async Task<IHttpActionResult> Get(Guid id)
         {
-#if DEBUG
-            var areas = await Database.GetAreasAsync();
-            return Ok(areas);
-#else
             var url = _apiClient.GetUrl("useravatar/" + id);
 
             HttpResponseMessage response;
@@ -42,8 +38,6 @@ namespace UsersVoice.UI.Web.Controllers
             };
 
             return ResponseMessage(imageResponse);
-
-#endif
         }
     }
 }
