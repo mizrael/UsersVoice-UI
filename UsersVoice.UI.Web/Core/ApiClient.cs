@@ -30,7 +30,8 @@ namespace UsersVoice.UI.Web.Core
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(GetUrl(url));
+                var finalUrl = GetUrl(url);
+                var response = await client.GetAsync(finalUrl);
                 if(null == response || response.StatusCode != HttpStatusCode.OK)
                     return default(TModel);
 
