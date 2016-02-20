@@ -12,7 +12,8 @@ The team was composed as follows:
 The system works as a "suggestion box" for user ideas, with the possibility for the community to comment and vote the ideas they like most. Each user has a fixed amount of points available from the beginning that can spend voting (1, 2 or 3 votes). Each idea can be voted once but a user can take back the vote if she changes her mind.
 In case an idea is cancelled by the admins, the voters will get their points back. In case the idea is approved, the voters will get the points back multiplied by 1.5 . Finally, if an idea is implemented (eg. the requested software is written ), the voters will receive half of the points spent in addition.
 
-The system was deployed entirely on Azure using a standard web app for the front-end and a virtual machine for the APIs.
+During the Hackathon the system has been deployed entirely on Azure using a standard web app for the front-end and a virtual machine for the APIs. 
+Actually is hosted instead on AppHarbor here: http://usersvoiceui.apphb.com/
 
 ## Architecture
 The system is divided in two main parts: the public front-end and the API for the data services.
@@ -21,7 +22,9 @@ The system is divided in two main parts: the public front-end and the API for th
 The front-end is written in C# using ASP.NET MVC, WebAPI and AngularJS. All the data displayed is loaded and updated via API calls.
 
 ### API
-The API is written in C# using ASP.NET WebAPI and MongoDb as persistence mechanism. The system is architectured with the CQRS pattern, using two separate databases for commands and queries and an event system to keep the data in sync ( we used the excellent Mediatr library ).
+The API is written in C# using ASP.NET WebAPI and MongoDb as persistence mechanism. The system is architectured with the CQRS pattern, using two separate databases for commands and queries and an event system to keep the data in sync ( we used the excellent Mediatr library ). 
+
+The repository for the APIs can be found here: https://github.com/mizrael/UsersVoice-Services
 
 ## Database preparation
 - download MongoDB
