@@ -5,25 +5,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/libraries")
-    @Scripts.Render("~/bundles/app")
-    @*@Scripts.Render("~/bundles/modernizr")
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/angular.js")
-    @Scripts.Render("~/Scripts/angular-route.js")
-
-    @Scripts.Render("~/app/app.js")
-    @Scripts.Render("~/app/directives/user-avatar.js")
-    @Scripts.Render("~/app/services/UsersService.js")
-    @Scripts.Render("~/app/services/AreasService.js")
-    @Scripts.Render("~/app/services/IdeasService.js")
-    @Scripts.Render("~/app/services/IdeaCommentsService.js")
-    @Scripts.Render("~/app/services/LoginService.js")
-    @Scripts.Render("~/app/services/VotingService.js")
-    @Scripts.Render("~/app/UsernameController.js")
-    @Scripts.Render("~/app/LoginController.js")*@
 </head>
 <body ng-app="userVoice">
     <div class="navbar navbar-inverse navbar-fixed-top bottom20">
@@ -46,6 +27,8 @@
         <hr />
     </div>
 
+    @Scripts.Render("~/bundles/libraries")
+    @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
 </body>
 </html>

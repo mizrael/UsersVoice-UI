@@ -7,11 +7,11 @@
             scope: {
                 completeName: '@name',
                 id: '@',
-                cssClass:'@class'
+                cssClass: '@class'
             },
-            controller: function ($scope) {
+            controller: ['$scope',function ($scope) {
                 $scope.url = ($scope.id) ? "/api/useravatar/" + $scope.id : "";
-            },
+            }],
             template: '<a href="#/users/{{id}}"><img ng-src="{{url}}" alt="{{completeName}}" class="{{cssClass}}"></a>'
         };
     }

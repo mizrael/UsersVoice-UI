@@ -158,13 +158,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\controllers.js" />
     <Content Include="app\directives\user-avatar.js" />
-    <Content Include="app\LoginController.js" />
+    <Content Include="app\controllers\LoginController.js" />
     <Content Include="app\services\AreasService.js" />
     <Content Include="app\services\LoginService.js" />
     <Content Include="app\services\IdeasService.js" />
     <Content Include="app\services\IdeaCommentsService.js" />
-    <Content Include="app\UsernameController.js" />
+    <Content Include="app\controllers\UsernameController.js" />
     <Content Include="app\views\AreaDetail.html" />
     <Content Include="app\views\UserProfile.html" />
     <Content Include="app\views\Loading.html" />

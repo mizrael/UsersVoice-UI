@@ -15,11 +15,18 @@ namespace UsersVoice.UI.Web
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/app/", "*.js", true));
+            bundles.Add(new ScriptBundle("~/bundles/app")
+                       .IncludeDirectory("~/app/", "*.js", true));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+#if DEBUG
+            BundleTable.EnableOptimizations = false;
+#else
+            BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }
