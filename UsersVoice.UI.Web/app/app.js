@@ -113,7 +113,8 @@
         }
     ])
     .controller('VotingIdeaController', [
-        '$scope', '$http', '$routeParams', '$rootScope', 'VotingService', 'LoginService', function($scope, $http, $routeParams, $rootScope, VotingService, LoginService) {
+        '$scope', '$http', '$routeParams', '$rootScope', 'VotingService', 'LoginService',
+        function($scope, $http, $routeParams, $rootScope, VotingService, LoginService) {
             var self = this;
             var user = LoginService.getUser();
 
@@ -204,53 +205,56 @@
             this.initialize();
         }
     ])
-    .controller('IdeaCommentsController', function($scope, $rootScope, $http, $routeParams, LoginService) {
-        var instance = this,
-            user = LoginService.getUser();
+    .controller('IdeaCommentsController', [
+        '$scope', '$rootScope', '$http', '$routeParams', 'LoginService',
+        function($scope, $rootScope, $http, $routeParams, LoginService) {
+            var instance = this,
+                user = LoginService.getUser();
 
-        this.initialize = function() {
-            instance.resetComment();
-        };
-
-        this.resetComment = function() {
-            if (!user) {
-                return;
-            }
-
-            $scope.newComment = {
-                Text: '',
-                IdeaId: $routeParams.ideaId,
-                Author: user.CompleteName,
-                AuthorId: user.Id,
-                CreationDate: new Date()
+            this.initialize = function() {
+                instance.resetComment();
             };
-        };
 
-        $scope.sendComment = function() {
-            if (!$scope.canSendComment()) {
-                return;
-            }
+            this.resetComment = function() {
+                if (!user) {
+                    return;
+                }
 
-            $http({
-                method: 'POST',
-                url: "/api/ideas/" + $routeParams.ideaId + '/comment',
-                data: $scope.newComment
-            }).then(function successCallback(response) {
-                $rootScope.$broadcast('ideaCommented', $scope.newComment);
+                $scope.newComment = {
+                    Text: '',
+                    IdeaId: $routeParams.ideaId,
+                    Author: user.CompleteName,
+                    AuthorId: user.Id,
+                    CreationDate: new Date()
+                };
+            };
 
-                instance.resetComment();
+            $scope.sendComment = function() {
+                if (!$scope.canSendComment()) {
+                    return;
+                }
 
-            }, function errorCallback(response) {
-                instance.resetComment();
-            });
-        };
+                $http({
+                    method: 'POST',
+                    url: "/api/ideas/" + $routeParams.ideaId + '/comment',
+                    data: $scope.newComment
+                }).then(function successCallback(response) {
+                    $rootScope.$broadcast('ideaCommented', $scope.newComment);
 
-        $scope.canSendComment = function() {
-            return $scope.newComment && $scope.newComment.Text && 0 != $scope.newComment.Text.trim().length;
-        };
+                    instance.resetComment();
 
-        this.initialize();
-    })
+                }, function errorCallback(response) {
+                    instance.resetComment();
+                });
+            };
+
+            $scope.canSendComment = function() {
+                return $scope.newComment && $scope.newComment.Text && 0 != $scope.newComment.Text.trim().length;
+            };
+
+            this.initialize();
+        }
+    ])
     .controller('UserProfileController', [
         '$scope', '$routeParams', 'UsersService', 'IdeasService', 'IdeaCommentsService',
         function($scope, $routeParams, UsersService, IdeasService, IdeaCommentsService) {
@@ -347,7 +351,7 @@
     ])
     .controller('AreaDetailController', [
         '$scope', '$routeParams', 'AreasService', 'IdeasService',
-        function ($scope, $routeParams, AreasService, IdeasService) {
+        function($scope, $routeParams, AreasService, IdeasService) {
             var instance = this,
                 isLoading = false,
                 isLoadingIdeas = false;
@@ -392,7 +396,7 @@
                     isLoadingIdeas = false;
                 });
             };
-    
+
             this.initialize = function() {
                 instance.read();
             };
@@ -407,54 +411,57 @@
             this.initialize();
         }
     ])
-    .controller('SubmitIdeaDetailController', function($scope, $routeParams, $http, LoginService) {
-        var self = this;
+    .controller('SubmitIdeaDetailController', [
+        '$scope', '$routeParams', '$http', 'LoginService',
+        function($scope, $routeParams, $http, LoginService) {
+            var self = this;
 
-        $scope.model = {
-            title: '',
-            description: '',
-            success: false,
-            validationError: false
-        };
+            $scope.model = {
+                title: '',
+                description: '',
+                success: false,
+                validationError: false
+            };
 
-        this.validate = function() {
-            return $scope.model.title && $scope.model.description;
-        }
-
-        this.cleanForm = function() {
-            $scope.model.title = '';
-            $scope.model.description = '';
-        }
-
-        $scope.submitIdea = function() {
-            var isLogged = LoginService.isLogged();
-
-            if (!isLogged)
-                return;
-
-            var user = LoginService.getUser();
-
-            if (!self.validate()) {
-                $scope.model.validationError = true;
-                return;
+            this.validate = function() {
+                return $scope.model.title && $scope.model.description;
             }
 
-            $http({
-                method: 'POST',
-                url: '/api/ideas/',
-                data: {
-                    AreaId: $routeParams.areaId,
-                    Title: $scope.model.title,
-                    Description: $scope.model.description,
-                    AuthorID: user.Id,
-                    Author: user.FirstName
-                }
-            }).then(function successCallback(response) {
-                $scope.model.validationError = false;
-                $scope.model.success = true;
-                self.cleanForm();
-            }, function errorCallback(response) {
+            this.cleanForm = function() {
+                $scope.model.title = '';
+                $scope.model.description = '';
+            }
 
-            });
-        };
-    });
+            $scope.submitIdea = function() {
+                var isLogged = LoginService.isLogged();
+
+                if (!isLogged)
+                    return;
+
+                var user = LoginService.getUser();
+
+                if (!self.validate()) {
+                    $scope.model.validationError = true;
+                    return;
+                }
+
+                $http({
+                    method: 'POST',
+                    url: '/api/ideas/',
+                    data: {
+                        AreaId: $routeParams.areaId,
+                        Title: $scope.model.title,
+                        Description: $scope.model.description,
+                        AuthorID: user.Id,
+                        Author: user.FirstName
+                    }
+                }).then(function successCallback(response) {
+                    $scope.model.validationError = false;
+                    $scope.model.success = true;
+                    self.cleanForm();
+                }, function errorCallback(response) {
+
+                });
+            };
+        }
+    ]);

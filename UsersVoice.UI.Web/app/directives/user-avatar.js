@@ -9,7 +9,7 @@
                 id: '@',
                 cssClass:'@class'
             },
-            controller: function ($scope, $element) {
+            controller: function ($scope) {
                 $scope.url = ($scope.id) ? "/api/useravatar/" + $scope.id : "";
             },
             template: '<a href="#/users/{{id}}"><img ng-src="{{url}}" alt="{{completeName}}" class="{{cssClass}}"></a>'
