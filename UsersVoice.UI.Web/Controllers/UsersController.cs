@@ -20,18 +20,12 @@ namespace UsersVoice.UI.Web.Controllers
         [HttpGet, Route("{id}")]
         public async Task<IHttpActionResult> GetById(Guid id)
         {
-
-#if DEBUG
-            throw new NotImplementedException();
-#else
-
             var url = "/users/" + id;
 
             var user = await _apiClient.FetchData<User>(url);
             if (null == user)
                 return NotFound();
             return Ok(user);
-#endif
 
         }
     }

@@ -1,0 +1,31 @@
+﻿<div class="ideas-container">
+    <div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
+
+    <div ng-repeat="dataItem in items" ng-hide="isLoading()">
+        <div class="row idea bottom20">
+            <div class="col-md-2">
+                <div class="col-md-12 text-center">
+                    <user-avatar name="dataItem.AuthorCompleteName" id="dataItem.AuthorId" class="img-circle img-responsive"></user-avatar>
+                </div>
+                <div class="col-md-12 text-center">
+                    <a href='#/users/{{dataItem.AuthorId}}'>{{dataItem.AuthorCompleteName}}</a>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="title">
+                    <a href='#/ideas/{{dataItem.Id}}'>{{dataItem.Title}}</a>
+                </div>
+                <p class="description">{{ dataItem.Description | limitTo:150 }}{{dataItem.Description.length > 150 ? '...' : ''}}</p>
+                <p class="posted-on">
+                    <span class="pull-left">posted in <a href="#/areas/{{dataItem.AreaId}}">{{dataItem.AreaTitle}}</a> on {{dataItem.CreationDate | date : shortDate}}</span>
+                    <div class="pull-right">
+                        <span class="glyphicon glyphicon-heart"></span> {{dataItem.TotalPoints}}
+                        <span class="glyphicon glyphicon-comment"></span> {{dataItem.TotalComments}}
+                    </div>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</div>

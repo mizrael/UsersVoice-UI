@@ -1,10 +1,10 @@
 ﻿
 <div ng-show="isLoading()" ng-include="'/app/views/Loading.html'"></div>
 
-<div class="user-profile" ng-hide="isLoading()">
+<div class="user-profile" ng-if="!isLoading()">
     <div class="col-md-3">
         <div class="col-md-12 text-center">
-            <user-avatar name="{{model.CompleteName}}" id="{{model.Id}}" class="img-circle"></user-avatar>
+            <user-avatar name="model.CompleteName" id="model.Id" class="img-circle"/>
         </div>
         <div class="col-md-12 text-center">
             <h4>{{model.CompleteName}}</h4>
@@ -16,10 +16,7 @@
 
     <div class="col-md-9">
 
-        <ul class="nav nav-tabs" role="tablist" id="userTabs">
-            <li role="presentation" class="active"><a href="#latestIdeas" aria-controls="home" role="tab" data-toggle="tab">Latest Ideas</a></li>
-            <li role="presentation"><a href="#latestComments" aria-controls="profile" role="tab" data-toggle="tab">Latest Comments</a></li>
-        </ul>
+        <tabs-navigation items="tabs"></tabs-navigation>
 
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="latestIdeas">

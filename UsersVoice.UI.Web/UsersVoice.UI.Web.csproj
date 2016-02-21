@@ -158,7 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\UserProfileController.js" />
     <Content Include="app\controllers\controllers.js" />
+    <Content Include="app\controllers\AreaDetailController.js" />
+    <Content Include="app\directives\tabs-navigation.js" />
+    <Content Include="app\directives\ideas-archive.js" />
     <Content Include="app\directives\user-avatar.js" />
     <Content Include="app\controllers\LoginController.js" />
     <Content Include="app\services\AreasService.js" />
@@ -167,6 +171,8 @@
     <Content Include="app\services\IdeaCommentsService.js" />
     <Content Include="app\controllers\UsernameController.js" />
     <Content Include="app\views\AreaDetail.html" />
+    <Content Include="app\views\templates\tabs-navigation.html" />
+    <Content Include="app\views\templates\ideas.html" />
     <Content Include="app\views\UserProfile.html" />
     <Content Include="app\views\Loading.html" />
     <Content Include="app\views\ChangeIdeaStatus.html" />

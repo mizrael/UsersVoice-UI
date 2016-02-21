@@ -5,14 +5,19 @@
             restrict: 'E',
             replace: true,
             scope: {
-                completeName: '@name',
-                id: '@',
+                getCompleteName: '&name',
+                getId: '&id',
                 cssClass: '@class'
             },
-            controller: ['$scope',function ($scope) {
-                $scope.url = ($scope.id) ? "/api/useravatar/" + $scope.id : "";
+            controller: ['$scope', function ($scope) {
+                var id = $scope.getId();
+                if (id) {
+                    $scope.imageUrl = "/api/useravatar/" + id;
+                    $scope.detailsUrl = "#/users/" + id;
+                }
+               
             }],
-            template: '<a href="#/users/{{id}}"><img ng-src="{{url}}" alt="{{completeName}}" class="{{cssClass}}"></a>'
+            template: '<a href="{{detailsUrl}}" title="{{getCompleteName()}}"><img ng-src="{{imageUrl}}" alt="{{getCompleteName()}}" title="{{getCompleteName()}}" class="{{cssClass}}"></a>'
         };
     }
 

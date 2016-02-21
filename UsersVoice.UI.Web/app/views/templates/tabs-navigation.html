@@ -1,0 +1,5 @@
+﻿<ul class="nav nav-tabs" role="tablist">
+    <li ng-repeat="item in items" ng-class="{ 'active': $first }" role="presentation">
+        <a href="{{item.dest}}" aria-controls="home" role="tab" data-toggle="tab">{{item.text}}</a>
+    </li>
+</ul>
