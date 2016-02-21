@@ -186,10 +186,8 @@
     <Content Include="app\services\VotingService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\dell-logo-png-wallpaper-3.jpg" />
-    <Content Include="Content\images\Dell_Logo.png" />
+    <Content Include="Content\images\dell-logo.jpg" />
     <Content Include="Content\images\loading.gif" />
-    <Content Include="Content\images\user.JPG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
